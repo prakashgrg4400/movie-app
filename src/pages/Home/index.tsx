@@ -1,8 +1,11 @@
+import HomeSlider from "../../components/Home/HomeSlider";
 
 function Home() {
-  return (
-    <div>Home</div>
-  )
+    return (
+        <div className=" w-[90%] mx-auto">
+            <HomeSlider />
+        </div>
+    );
 }
 
-export default Home
+export default Home;
