@@ -1,44 +1,13 @@
-import { useEffect, useState } from "react";
+import { CarouselMovie, imagePath } from "../../utilis/constant"
 import { TbThumbUp } from "react-icons/tb";
-import { imagePath } from "../../utilis/constant";
-import { publicAxios } from "../../api/axiosInstance";
 
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzdhOGQzYjIxZmFmYzcxOWIxZTYwZDIxNjNhZGI2OSIsIm5iZiI6MTcyNTk1NDk4Ni42MTcxLCJzdWIiOiI2NmRmZmEyYzljZmViMjhkNjY2ZGYxNWIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.kxi95IhtGocQegPHj1kMCLjO48jXrXEhTDNhqYwAHAk
+interface HomeCarousels {
+    carouselMovies : CarouselMovie[]
+}
 
-// e77a8d3b21fafc719b1e60d2163adb69
-function HomeCarousel() {
-    interface CarouselMovie {
-        backdrop_path: string;
-        poster_path: string;
-        title: string;
-        overview: string;
-        vote_count: number;
-    }
-
-    const [carouselMovies, setCarouselMovies] = useState<CarouselMovie[]>([]);
-
-    const fetchUpcomingMovies = async () => {
-        try {
-            const response = await publicAxios.get(
-                "/3/movie/upcoming?language=en-US&page=1"
-            );
-            //  console.log(response.data.results);
-            setCarouselMovies(response.data.results);
-        } catch (err) {
-            console.log("fetching upcoming moveies error , ", err);
-        }
-    };
-
-    useEffect(() => {
-        fetchUpcomingMovies();
-    }, []);
-
-    console.log(carouselMovies);
-
-    return (
-        <div className="relative w-[900px] ">
-            <div id="carouselExample" className="carousel slide">
-                <div className="carousel-inner">
+function HomeCarousel({carouselMovies} :HomeCarousels ) {
+  return (
+    <div className="carousel-inner">
                     {carouselMovies.map((movie, ind) => (
                         <div className={`carousel-item ${ind===0?"active" : ""}`}>
                             <div className="relative">
@@ -81,33 +50,7 @@ function HomeCarousel() {
                         </div>
                     ))}
                 </div>
-                <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="prev"
-                >
-                    <span
-                        className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                    ></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="next"
-                >
-                    <span
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                    ></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    );
+  )
 }
 
-export default HomeCarousel;
+export default HomeCarousel
