@@ -10,7 +10,7 @@ import HomeCarouselList from "./HomeCarouselList";
 function HomeSlider() {
     const [carouselMovies, setCarouselMovies] = useState<CarouselMovie[]>([]);
 
-    const [next , setNext] = useState<number[]>([0,1,2,3]);
+    const [next , setNext] = useState<number[]>([1,2,3]);
 
     const fetchUpcomingMovies = async () => {
         try {
