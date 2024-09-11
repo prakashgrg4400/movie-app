@@ -9,8 +9,30 @@ import HomeCarouselList from "./HomeCarouselList";
 // e77a8d3b21fafc719b1e60d2163adb69
 function HomeSlider() {
     const [carouselMovies, setCarouselMovies] = useState<CarouselMovie[]>([]);
+    const [selected , setSelected] = useState(0);
 
     const [next , setNext] = useState<number[]>([1,2,3]);
+    // console.log(next)
+
+    useEffect(()=>{
+          const ind1 = (selected+1)%carouselMovies.length ;
+          const ind2 = (selected+2)%carouselMovies.length ;
+          const ind3 = (selected+3)%carouselMovies.length ;
+          setNext([ind1 , ind2 , ind3]);
+    } , [carouselMovies , selected]) ;
+
+    useEffect(()=>{
+         const carousel = document.getElementById("carouselExample");
+         const handleSlide = (e)=>{
+            setSelected(e.to); 
+         }
+         if(carousel){
+            carousel.addEventListener("slid.bs.carousel" , handleSlide) ;
+            return ()=>{
+                carousel.removeEventListener("slid.bs.carousel" , handleSlide);
+            }
+         }
+    } , []);
 
     const fetchUpcomingMovies = async () => {
         try {
@@ -28,10 +50,10 @@ function HomeSlider() {
         fetchUpcomingMovies();
     }, []);
 
-    console.log(carouselMovies);
+    // console.log(carouselMovies);
 
     return (
-        <div className="row border-4 border-solid">
+        <div className="row">
             <div className="relative col-8">
                 <div id="carouselExample" className="carousel slide">
                     <HomeCarousel carouselMovies={carouselMovies} />
