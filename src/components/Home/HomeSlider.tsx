@@ -23,8 +23,10 @@ function HomeSlider() {
 
     useEffect(()=>{
          const carousel = document.getElementById("carouselExample");
-         const handleSlide = (e)=>{
-            setSelected(e.to); 
+         const handleSlide = (e:Event)=>{
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const customEvent = e as any ;
+            setSelected(customEvent.to); 
          }
          if(carousel){
             carousel.addEventListener("slid.bs.carousel" , handleSlide) ;
