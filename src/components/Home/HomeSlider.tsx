@@ -4,9 +4,6 @@ import { CarouselMovie } from "../../utilis/constant";
 import HomeCarousel from "./HomeCarousel";
 import HomeCarouselList from "./HomeCarouselList";
 
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzdhOGQzYjIxZmFmYzcxOWIxZTYwZDIxNjNhZGI2OSIsIm5iZiI6MTcyNTk1NDk4Ni42MTcxLCJzdWIiOiI2NmRmZmEyYzljZmViMjhkNjY2ZGYxNWIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.kxi95IhtGocQegPHj1kMCLjO48jXrXEhTDNhqYwAHAk
-
-// e77a8d3b21fafc719b1e60d2163adb69
 function HomeSlider() {
     const [carouselMovies, setCarouselMovies] = useState<CarouselMovie[]>([]);
     const [selected , setSelected] = useState(0);

@@ -13,9 +13,15 @@ function MovieList({topMovies}:MovieListProps) {
         <div className=" row row-cols-6">
             {topMovies.length>0 && topMovies.map((movie , index)=>{
                 return (
-                    <div className="relative" key={index}>
-                        <img src={imagePath+movie.poster_path} alt="" />
-                         <div className="absolute -bottom-6 h-28 w-full _carouselGradient"></div>
+                    <div className="" key={index}>
+
+                        <div className="relative overflow-hidden" >
+                            <img src={imagePath+movie.poster_path} alt="" />
+                            <div className="absolute -bottom-6 h-28 w-full _carouselGradient"></div>
+                        </div>
+                        <div>
+                            <h1 className="text-[17px]">{movie.title}</h1>
+                        </div>
                     </div>
                 )
             })}
