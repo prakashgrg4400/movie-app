@@ -21,6 +21,7 @@ function MovieList({topMovies}:MovieListProps) {
                         </div>
                         <div>
                             <h1 className="text-[17px]">{movie.title}</h1>
+                            <h1 className="text-[17px]">{movie.title}</h1>
                         </div>
                     </div>
                 )
